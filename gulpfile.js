@@ -1,10 +1,28 @@
-const { src, dest } = require(`gulp`);
-const htmlCompressor = require(`gulp-htmlmin`);
+/*Dev side
+    Validate CSS w/ .stylrlintrc.json
+    Validate JS w/ eslint
+    Transpie to ES5
+    Saving must lint CS or JS
+    Saving refreshes broswer
+    `gulp` triggers the devlopment
+*/
+const { src, dest, series, watch} = require (`gulp`),
+    CSSLinter = require(`gulp-stylelint`);
 
-let compressHTML = () => {
-    return src(`uncompressed-html/*.html`)
-        .pipe(htmlCompressor({collapseWhitespace: true}))
-        .pipe(dest(`compressed-html/`));
+    let lintCSS = () => {
+    return src(`styles/**/*.css`)
+        .pipe(CSSLinter({
+            failAfterError: false,
+            reporters: [
+                {formatter: `string`, console: true}
+            ]
+        }));
 };
 
-exports.compressHTML = compressHTML;
+exports.lintCSS = lintCSS;
+/*
+    Product Side
+    creates a folder called `prod`
+        img, js, html, css
+    `gulp build` triggers the prodcution track
+*/
