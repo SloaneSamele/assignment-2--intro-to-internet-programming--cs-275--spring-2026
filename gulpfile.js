@@ -7,7 +7,8 @@
     `gulp` triggers the devlopment
 */
 const { src, dest, series, watch} = require (`gulp`),
-    CSSLinter = require(`gulp-stylelint`);
+    CSSLinter = require(`gulp-stylelint`),
+    babel = require(`gulp-babel`);
 
     let lintCSS = () => {
     return src(`styles/**/*.css`)
@@ -18,8 +19,13 @@ const { src, dest, series, watch} = require (`gulp`),
             ]
         }));
 };
-
+let transpileJSForDev = () => {
+    return src(`js/*.js`)
+        .pipe(babel())
+        .pipe(dest(`temp/scripts`));
+};
 exports.lintCSS = lintCSS;
+exports.transpileJSForDev = transpileJSForDev;
 /*
     Product Side
     creates a folder called `prod`
