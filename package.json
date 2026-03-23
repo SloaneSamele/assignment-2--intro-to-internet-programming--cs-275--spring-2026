@@ -16,6 +16,7 @@
     "gulp-stylelint": "^13.0.0"
   },
   "dependencies": {
-    "gulp-babel": "^8.0.0"
+    "gulp-babel": "^8.0.0",
+    "htmlmin": "^0.0.7"
   }
 }
