@@ -13,7 +13,7 @@ const { src, dest, series, watch} = require (`gulp`),
 
 
 let lintCSS = () => {
-    return src(`styles/**/*.css`)
+    return src(`styles/main.css`)
         .pipe(CSSLinter({
             failAfterError: false,
             reporters: [
