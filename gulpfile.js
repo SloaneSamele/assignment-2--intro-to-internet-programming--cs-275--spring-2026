@@ -1,8 +1,8 @@
 /*Dev side
-    Validate CSS w/ .stylrlintrc.json
+    +Validate CSS w/ .stylrlintrc.json
     Validate JS w/ eslint
-    Transpie to ES5
-    Saving must lint CS or JS
+    +Transpie to ES5
+    +Saving must lint CS or JS
     Saving refreshes broswer
     `gulp` triggers the devlopment
 */
@@ -12,7 +12,7 @@ const { src, dest, series, watch} = require (`gulp`),
     htmlCompressor = require(`gulp-htmlmin`);
 
 
-    let lintCSS = () => {
+let lintCSS = () => {
     return src(`styles/**/*.css`)
         .pipe(CSSLinter({
             failAfterError: false,
