@@ -6,9 +6,16 @@
     Saving refreshes broswer
     `gulp` triggers the devlopment
 */
+/*
+    Product Side
+    creates a folder called `prod`
+        img, js, html, css
+    `gulp build` triggers the prodcution track
+*/
 const { src, dest, series, watch} = require (`gulp`),
     CSSLinter = require(`gulp-stylelint`),
     babel = require(`gulp-babel`),
+    sass = require(`gulp-sass`)(require(`sass`)),
     htmlCompressor = require(`gulp-htmlmin`);
 
 
@@ -20,6 +27,14 @@ let lintCSS = () => {
                 {formatter: `string`, console: true}
             ]
         }));
+};
+let compileCSSForDev = () => {
+    return src(`styles//main.css`)
+        .pipe(sass.sync({
+            style: `expanded`,
+            precision: 10
+        }).on(`error`, sass.logError))
+        .pipe(dest(`temp/styles`));
 };
 let transpileJSForDev = () => {
     return src(`js/*.js`)
@@ -35,9 +50,4 @@ let compressHTML = () => {
 exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.compressHTML = compressHTML;
-/*
-    Product Side
-    creates a folder called `prod`
-        img, js, html, css
-    `gulp build` triggers the prodcution track
-*/
+exports.compileCSSForDev = compileCSSForDev;
