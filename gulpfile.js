@@ -42,7 +42,30 @@ let compressHTML = () => {
         .pipe(dest(`prod`));
 };
 
+let serve = () => {
+    browserSync({
+        notify: true,
+        reloadDelay: 50,
+        server: {
+            baseDir: [
+                `./`
+            ]
+        }
+    });
+    watch(`js/*.js`, series(transpileJSForDev))
+        .on(`change`, reload);
+
+    watch(`styles/**/*.css`, compileCSSForDev)
+        .on(`change`, reload);
+
+    watch(`img/**/*`)
+        .on(`change`, reload);
+};
 exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.compressHTML = compressHTML;
 
+exports.serve = series(
+    transpileJSForDev,
+    serve
+);
