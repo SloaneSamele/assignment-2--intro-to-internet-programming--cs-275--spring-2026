@@ -20,6 +20,7 @@
   "dependencies": {
     "browser-sync": "^3.0.4",
     "gulp-babel": "^8.0.0",
+    "gulp-uglify": "^3.0.2",
     "htmlmin": "^0.0.7"
   }
 }
