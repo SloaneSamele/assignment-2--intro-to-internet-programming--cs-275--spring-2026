@@ -64,12 +64,12 @@ let serve = () => {
 
 let copyUnprocessedAssetsForProd = () => {
     return src([
-        `./*.*`,             // Source all files,
-        `./**`,              // and all folders,
-        `!*.html`,          // but not the HTML folder
-        `!./img/`,           // ignore images;
-        `!./img/.gitignore`, // ignore .gitignore;
-        `!js/*.js`,        // ignore JS;
+        `./*.*`,
+        `./**`,
+        `!*.html`,
+        `!./img/`,
+        `!./img/.gitignore`,
+        `!js/*.js`,
         `!json`,
         `!node_modules/`,
         `!node_modules/*.*`,
