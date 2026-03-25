@@ -62,6 +62,30 @@ let serve = () => {
         .on(`change`, reload);
 };
 
+let copyUnprocessedAssetsForProd = () => {
+    return src([
+        `./*.*`,             // Source all files,
+        `./**`,              // and all folders,
+        `!*.html`,          // but not the HTML folder
+        `!./img/`,           // ignore images;
+        `!./img/.gitignore`, // ignore .gitignore;
+        `!js/*.js`,        // ignore JS;
+        `!json`,
+        `!node_modules/`,
+        `!node_modules/*.*`,
+        `!node_modules/**`,
+        `!*.json`,
+        `!.babelrc`,
+        `!.eslintrc`,
+        `!.editorconfig`,
+        `!gulpfile.js`,
+        `!eslint.config.mjs`,
+        `!README.md`,
+        `!styles/**`       // and, ignore Sass/CSS.
+    ], {dot: true})
+        .pipe(dest(`prod`));
+};
+
 let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
@@ -73,6 +97,7 @@ exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.compressHTML = compressHTML;
 exports.transpileJSForProd = transpileJSForProd;
+exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
 exports.serve = series(
     transpileJSForDev,
     serve
