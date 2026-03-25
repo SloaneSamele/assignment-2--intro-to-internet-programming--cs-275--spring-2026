@@ -55,7 +55,7 @@ let serve = () => {
     watch(`js/*.js`, series(transpileJSForDev))
         .on(`change`, reload);
 
-    watch(`styles/**/*.css`, compileCSSForDev)
+    watch(`styles/**/*.css`, lintCSS)
         .on(`change`, reload);
 
     watch(`img/**/*`)
