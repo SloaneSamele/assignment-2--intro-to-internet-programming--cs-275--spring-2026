@@ -9,7 +9,7 @@
 //
 // DON’T PROCEED UNTIL YOU’RE SURE STYLELINT AND EDITORCONFIG ARE WORKING RIGHT
 // -------------------------------------------------------------------------- */
-head {
+body {
     font-family: "Open Sans", sans-serif;
     line-height: 1.4;
 }
