@@ -18,6 +18,7 @@ const { src, dest, series, watch} = require (`gulp`),
     htmlCompressor = require(`gulp-htmlmin`),
     browserSync = require(`browser-sync`),
     jsCompressor = require(`gulp-uglify`),
+    cssCompressor = require(`gulp-clean-css`),
     reload = browserSync.reload;
 
 let lintCSS = () => {
@@ -81,7 +82,7 @@ let copyUnprocessedAssetsForProd = () => {
         `!gulpfile.js`,
         `!eslint.config.mjs`,
         `!README.md`,
-        `!styles/**`       // and, ignore Sass/CSS.
+        `!styles/**`
     ], {dot: true})
         .pipe(dest(`prod`));
 };
@@ -93,11 +94,18 @@ let transpileJSForProd = () => {
         .pipe(dest(`prod/scripts`));
 };
 
+let compressCSS = () => {
+    return src(`styles/*.css`)
+    .pipe(cssCompressor())
+    .pipe(dest(`prod/styles`));
+};
+
 exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.compressHTML = compressHTML;
 exports.transpileJSForProd = transpileJSForProd;
 exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
+exports.compressCSS = compressCSS;
 exports.serve = series(
     transpileJSForDev,
     serve
