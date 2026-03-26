@@ -92,6 +92,7 @@ exports.compressHTML = compressHTML;
 exports.transpileJSForProd = transpileJSForProd;
 exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
 exports.compressCSS = compressCSS;
+exports.default = serve;
 exports.serve = series(
     lintCSS,
     transpileJSForDev,
