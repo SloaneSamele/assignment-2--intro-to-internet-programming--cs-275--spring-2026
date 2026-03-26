@@ -18,3 +18,8 @@ h1 {
   font-size: 2rem;
   line-height: 1.1875;
 }
+
+.carousel-slides {
+  width: 640px;
+  padding-left: 20px;
+}
