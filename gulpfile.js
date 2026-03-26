@@ -107,6 +107,7 @@ exports.transpileJSForProd = transpileJSForProd;
 exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
 exports.compressCSS = compressCSS;
 exports.serve = series(
+    lintCSS,
     transpileJSForDev,
     serve
 );
