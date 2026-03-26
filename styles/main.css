@@ -9,6 +9,7 @@
 //
 // DON’T PROCEED UNTIL YOU’RE SURE STYLELINT AND EDITORCONFIG ARE WORKING RIGHT
 // -------------------------------------------------------------------------- */
-abcdef {
-     color: cs275
+head {
+    font-family: "Open Sans", sans-serif;,sans-serif;
+    line-height: 1.4;
 }
