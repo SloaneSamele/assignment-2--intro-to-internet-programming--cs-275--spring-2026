@@ -1,17 +1,3 @@
-/*Dev side
-    +Validate CSS w/ .stylrlintrc.json
-    Validate JS w/ eslint
-    +Transpie to ES5
-    +Saving must lint CS or JS
-    Saving refreshes broswer
-    `gulp` triggers the devlopment
-*/
-/*
-    Product Side
-    creates a folder called `prod`
-        img, js, html, css
-    `gulp build` triggers the prodcution track
-*/
 const { src, dest, series, watch} = require (`gulp`),
     CSSLinter = require(`gulp-stylelint`),
     babel = require(`gulp-babel`),
@@ -68,12 +54,11 @@ let copyUnprocessedAssetsForProd = () => {
         `./*.*`,
         `./**`,
         `!*.html`,
-        `!./img/`,
-        `!./img/.gitignore`,
-        `!js/*.js`,
-        `!json`,
+        `!img/`,
+        `!img/.gitignore`,
+        `!js/**`,
+        `!json/**`,
         `!node_modules/`,
-        `!node_modules/*.*`,
         `!node_modules/**`,
         `!*.json`,
         `!.babelrc`,
@@ -82,7 +67,8 @@ let copyUnprocessedAssetsForProd = () => {
         `!gulpfile.js`,
         `!eslint.config.mjs`,
         `!README.md`,
-        `!styles/**`
+        `!styles/**`,
+        `!prod/**`,
     ], {dot: true})
         .pipe(dest(`prod`));
 };
@@ -110,4 +96,10 @@ exports.serve = series(
     lintCSS,
     transpileJSForDev,
     serve
+);
+exports.build = series(
+    compressHTML,
+    compressCSS,
+    transpileJSForProd,
+    copyUnprocessedAssetsForProd
 );
