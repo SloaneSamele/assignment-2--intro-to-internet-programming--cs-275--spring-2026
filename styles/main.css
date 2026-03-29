@@ -15,8 +15,10 @@ body {
 }
 
 h1 {
+  text-align: center;
   font-size: 2rem;
   line-height: 1.1875;
+  font-weight: 600;
 }
 
 .carousel-slides {
