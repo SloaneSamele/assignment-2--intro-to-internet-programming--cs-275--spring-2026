@@ -5,7 +5,9 @@ let script = document.createElement(`script`);
 let artist = document.createElement(`h2`);
 let album = document.createElement(`p`);
 let review = document.createElement(`p`);
+let reviewSource = document.createElement(`a`);
 let img = document.createElement(`img`);
+let imgCredit = document.createElement(`a`);
 let artistURL = document.createElement(`a`);
 
 function container(data){
