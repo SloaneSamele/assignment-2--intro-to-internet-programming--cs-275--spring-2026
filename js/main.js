@@ -24,5 +24,13 @@ function container(data){
     reviewSource.href = data.slides[slide].review.url;
     console.log(`${img.alt}`);
 }
+
+carousel.appendChild(artist);
+carousel.appendChild(artistURL);
+carousel.appendChild(img);
+carousel.appendChild(imgCredit);
+carousel.appendChild(review);
+carousel.appendChild(reviewSource);
+
 script.setAttribute(`src`, `json/data.json`);
 body.appendChild(script);
