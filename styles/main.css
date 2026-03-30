@@ -29,6 +29,7 @@ h2 {
 .carousel {
   display: grid;
   place-items: center;
+  z-index: 0;
 }
 
 .carousel-slides {
@@ -40,4 +41,6 @@ h2 {
 
 a{
   color: red;
+  z-index: 1;
+  text-decoration: none;
 }
