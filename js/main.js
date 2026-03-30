@@ -1,4 +1,3 @@
-let script = document.querySelector(`body`);
 let body = document.querySelector(`body`);
 let carousel = document.querySelector(`.carousel-slides`);
 let script = document.createElement(`script`);
@@ -8,7 +7,14 @@ let review = document.createElement(`p`);
 let img = document.createElement(`img`);
 let artistURL = document.createElement(`a`);
 
-script = document.createElement(`script`);
-script.setAttribute(`src`, `data/data.json`);
+function container(data){
+    artist.textContent = data.slides[0].artist;
+    album.textContent = data.slides[0].album;
+    review.textContent = data.slides[0].review.content;
+    img.setAttribute(`src`, data.slides[0].cover_image.path);
+    artistURL.setAttribute(`src`, data.slides[0].url);
+    artistURL.innerText = artist.textContent;
+    console.log(`${data.slides[0].cover_image.path}`);
+}
 script.setAttribute(`src`, `json/data.json`);
 body.appendChild(script);
