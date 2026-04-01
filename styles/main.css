@@ -32,3 +32,18 @@ a{
   z-index: 2;
   text-decoration: none;
 }
+
+.carousel-navigation a{
+  position: absolute;
+  top: 50%;
+}
+
+.carousel-navigation a:nth-child(1){
+  position: absolute;
+  left: 20%
+}
+
+.carousel-navigation a:nth-child(2){
+  position: absolute;
+  right: 20%;
+}
