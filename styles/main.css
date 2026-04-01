@@ -47,3 +47,7 @@ a{
   position: absolute;
   right: 20%;
 }
+
+.carousel-slides a{
+  position: relative;
+}
