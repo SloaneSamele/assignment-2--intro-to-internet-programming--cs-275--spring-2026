@@ -28,6 +28,26 @@ function container(data){
     console.log(`${img.alt}`);
 }
 
+
+let previousSlide = (event) =>{
+    if(slide === 0 ){
+        leftArrow.style.visibility = `hidden`;
+        return;
+    }
+        --slide;
+        leftArrow.style.visibility = `visible`;
+        container();
+}
+
+let nextSlide = (event) =>{
+    if(slide >= 3){
+        righttArrow.style.visibility = `hidden`;
+        return;
+    }
+        --slide;
+        rightArrow.style.visibility = `visible`;
+        container();
+}
 leftArrow.addEventListener(`click`, previousSlide());
 rightArrow.addEventListener(`click`, nextSlide());
 carousel.appendChild(artist);
