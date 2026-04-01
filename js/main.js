@@ -10,6 +10,9 @@ let img = document.createElement(`img`);
 let imgCredit = document.createElement(`a`);
 let artistURL = document.createElement(`a`);
 
+let leftArrow = document.querySelectorAll(`a`)[0];
+let rightArrow = document.querySelectorAll(`a`)[1];
+
 function container(data){
     artist.textContent = data.slides[slide].artist;
     album.textContent = data.slides[slide].album;
@@ -25,6 +28,8 @@ function container(data){
     console.log(`${img.alt}`);
 }
 
+leftArrow.addEventListener(`click`, previousSlide());
+rightArrow.addEventListener(`click`, nextSlide());
 carousel.appendChild(artist);
 carousel.appendChild(artistURL);
 carousel.appendChild(img);
