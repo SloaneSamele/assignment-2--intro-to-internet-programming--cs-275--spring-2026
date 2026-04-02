@@ -9,8 +9,7 @@ leftArrow.style.visibility = `hidden`;
 
 function container(data){
     for(let index = 0; index < data.slides.length; ++index){
-        let artist = document.createElement(`h2`);
-        let album = document.createElement(`p`);
+        let album = document.createElement(`h2`);
         let coverImage = document.createElement(`img`);
         let artistURL = document.createElement(`a`);
         let imageCredit = document.createElement(`a`);
@@ -27,14 +26,13 @@ function container(data){
         coverImage.src = data.slides[index].cover_image.path;
         coverImage.alt = data.slides[index].cover_image.alt_content;
         imageCredit.href = data.slides[index].cover_image.url;
-        imageCredit.textContent =  `Credit: ` + data.slides[index].cover_image.credit;
+        imageCredit.textContent = data.slides[index].cover_image.credit;
 
         review.textContent = data.slides[index].review.content;
         review.style.textAlign = `start`;
-        reviewCredit.textContent = `--` + data.slides[index].review.source;
-        reviewCredit.href =  data.slides[index].review.url;
+        reviewCredit.textContent = data.slides[index].review.source;
+        reviewCredit.href = data.slides[index].review.url;
 
-        slide.appendChild(artist);
         slide.appendChild(album);
         slide.appendChild(artistURL);
         slide.appendChild(coverImage);
