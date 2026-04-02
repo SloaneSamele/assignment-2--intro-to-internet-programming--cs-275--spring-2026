@@ -5,7 +5,7 @@ let script = document.createElement(`script`);
 
 let leftArrow = document.querySelectorAll(`a`)[0];
 let rightArrow = document.querySelectorAll(`a`)[1];
-
+leftArrow.style.visibility = `hidden`;
 function container(data){
     for(let index = 0; index < data.slides.length; ++index){
         let artist = document.createElement(`h2`);
@@ -42,6 +42,7 @@ function container(data){
         carousel.append(slide);
         console.log(`Slide number ` + index  +` Data.slide.lenght` + data.slides.length);
     }
+    showSlide();
 }
 
 let previousSlide = (event) =>{
@@ -52,17 +53,20 @@ let previousSlide = (event) =>{
         leftArrow.style.visibility = `visible`;
         console.log(`Current slide ` + currentSlide);
         --currentSlide;
+        showSlide();
+        updateArrows();
 }
 
 let nextSlide = (event) =>{
     let total = document.querySelectorAll(`.carousel-slide`).length;
-    if(currentSlide >= total -1){
+    if(currentSlide >= total - 1){
         rightArrow.style.visibility = `hidden`;
         return;
     }
         rightArrow.style.visibility = `visible`;
         console.log(`Current slide ` + currentSlide);
         ++currentSlide;
+        showSlide();
 }
 
 let showSlide = () => {
@@ -76,8 +80,8 @@ let updateArrows = () => {
     rightArrow.style.visibility = currentSlide === total - 1 ? `hidden` : `visible`;
 };
 
-leftArrow.addEventListener(`onclick`, previousSlide());
-rightArrow.addEventListener(`onclick`, nextSlide());
+leftArrow.addEventListener(`click`, previousSlide);
+rightArrow.addEventListener(`click`, nextSlide);
 
 script.setAttribute(`src`, `json/data.json`);
 body.appendChild(script);
