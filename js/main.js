@@ -27,12 +27,12 @@ function container(data){
         coverImage.src = data.slides[index].cover_image.path;
         coverImage.alt = data.slides[index].cover_image.alt_content;
         imageCredit.href = data.slides[index].cover_image.url;
-        imageCredit.textContent = data.slides[index].cover_image.credit;
+        imageCredit.textContent =  `Credit: ` + data.slides[index].cover_image.credit;
 
         review.textContent = data.slides[index].review.content;
         review.style.textAlign = `start`;
-        reviewCredit.textContent = data.slides[index].review.source;
-        reviewCredit.href = data.slides[index].review.url;
+        reviewCredit.textContent = `--` + data.slides[index].review.source;
+        reviewCredit.href =  data.slides[index].review.url;
 
         slide.appendChild(artist);
         slide.appendChild(album);
@@ -43,7 +43,6 @@ function container(data){
         slide.appendChild(reviewCredit);
 
         carousel.append(slide);
-        console.log(`Slide number ` + index  +` Data.slide.lenght` + data.slides.length);
     }
     showSlide();
 }
