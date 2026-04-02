@@ -2,32 +2,47 @@ let body = document.querySelector(`body`);
 let slide = 3;
 let carousel = document.querySelector(`.carousel-slides`);
 let script = document.createElement(`script`);
-let artist = document.createElement(`h2`);
-let album = document.createElement(`p`);
-let review = document.createElement(`p`);
-let reviewSource = document.createElement(`a`);
-let img = document.createElement(`img`);
-let imgCredit = document.createElement(`a`);
-let artistURL = document.createElement(`a`);
 
 let leftArrow = document.querySelectorAll(`a`)[0];
 let rightArrow = document.querySelectorAll(`a`)[1];
 
 function container(data){
-    artist.textContent = data.slides[slide].artist;
-    album.textContent = data.slides[slide].album;
-    review.textContent = data.slides[slide].review.content;
-    img.setAttribute(`src`, data.slides[slide].cover_image.path);
-    img.alt = data.slides[slide].cover_image.alt_content;
-    artistURL.setAttribute(`href`, data.slides[slide].url);
-    artistURL.textContent = data.slides[slide].artist;
-    imgCredit.textContent = data.slides[slide].cover_image.credit;
-    imgCredit.href = data.slides[slide].cover_image.url;
-    reviewSource.textContent = 'source: ' + data.slides[slide].review.source;
-    reviewSource.href = data.slides[slide].review.url;
-    console.log(`${img.alt}`);
-}
+    for(let index = 0; index < data.slides.length; ++index){
+        let artist = document.createElement(`h2`);
+        let album = document.createElement(`p`);
+        let coverImage = document.createElement(`img`);
+        let artistURL = document.createElement(`a`);
+        let imageCredit = document.createElement(`a`);
+        let review = document.createElement(`p`);
+        let reviewCredit = document.createElement(`a`);
+        let slide = document.createElement(`div`);
 
+        slide.classList.add(`.carousel-slide`);
+        artist.textContent = data.slides[index].artist;
+        album.textContent = data.slides[index].album;
+        artistURL.href = data.slides[index].url;
+        artistURL.textContent = data.slides[index].artist;
+
+        coverImage.src = data.slides[index].cover_image.path;
+        coverImage.alt = data.slides[index].cover_image.alt_content;
+        imageCredit.href = data.slides[index].cover_image.url;
+        imageCredit.textContent = data.slides[index].credit;
+
+        review.textContent = data.slides[index].review.content;
+        reviewCredit.textContent = data.slides[index].review.credit;
+        reviewCredit.href = data.slides[index].review.url;
+
+        slide.appendChild(artist);
+        slide.appendChild(album);
+        slide.appendChild(coverImage);
+        slide.appendChild(imageCredit);
+        slide.appendChild(review);
+        slide.appendChild(reviewCredit);
+
+        carousel.append(slide);
+        console.log(`Slide number ` + index  +` Data.slide.lenght` + data.slides.length);
+    }
+}
 
 let previousSlide = (event) =>{
     if(slide === 0 ){
@@ -36,7 +51,6 @@ let previousSlide = (event) =>{
     }
         --slide;
         leftArrow.style.visibility = `visible`;
-        container();
 }
 
 let nextSlide = (event) =>{
@@ -46,16 +60,10 @@ let nextSlide = (event) =>{
     }
         --slide;
         rightArrow.style.visibility = `visible`;
-        container();
 }
+
 leftArrow.addEventListener(`click`, previousSlide());
 rightArrow.addEventListener(`click`, nextSlide());
-carousel.appendChild(artist);
-carousel.appendChild(artistURL);
-carousel.appendChild(img);
-carousel.appendChild(imgCredit);
-carousel.appendChild(review);
-carousel.appendChild(reviewSource);
 
 script.setAttribute(`src`, `json/data.json`);
 body.appendChild(script);
