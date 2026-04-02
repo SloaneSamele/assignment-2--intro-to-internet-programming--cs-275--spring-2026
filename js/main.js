@@ -67,6 +67,7 @@ let nextSlide = (event) =>{
         console.log(`Current slide ` + currentSlide);
         ++currentSlide;
         showSlide();
+        updateArrows();
 }
 
 let showSlide = () => {
