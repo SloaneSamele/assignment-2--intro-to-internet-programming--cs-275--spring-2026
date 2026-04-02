@@ -1,5 +1,4 @@
 let body = document.querySelector(`body`);
-let slide = 3;
 let slide = 0;
 let carousel = document.querySelector(`.carousel-slides`);
 let script = document.createElement(`script`);
