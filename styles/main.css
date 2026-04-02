@@ -15,12 +15,12 @@ h2 {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
 .carousel-slides {
-  width: 640px;
-  padding-left: 20px;
-  padding-right: 20px;
-  z-index: 1;
+    display: flex;
+    width: 680px;
+    overflow: hidden;
+    margin: 0 auto;
+}
 
   display: flex;
   align-items: center;
@@ -30,23 +30,4 @@ h2 {
 a{
   z-index: 2;
   text-decoration: none;
-}
-
-.carousel-navigation a{
-  position: absolute;
-  top: 50%;
-}
-
-.carousel-navigation a:nth-child(1){
-  position: absolute;
-  left: 20%
-}
-
-.carousel-navigation a:nth-child(2){
-  position: absolute;
-  right: 20%;
-}
-
-.carousel-slides a{
-  position: relative;
 }
