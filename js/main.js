@@ -65,6 +65,16 @@ let nextSlide = (event) =>{
         ++currentSlide;
 }
 
+let showSlide = () => {
+    document.querySelector('.carousel-slides').style.transform = `translateX(-${currentSlide * 680}px)`;
+};
+
+let updateArrows = () => {
+    let total = document.querySelectorAll(`.carousel-slide`).length;
+
+    leftArrow.style.visibility = currentSlide === 0 ? `hidden` : `visible`;
+    rightArrow.style.visibility = currentSlide === total - 1 ? `hidden` : `visible`;
+};
 
 leftArrow.addEventListener(`onclick`, previousSlide());
 rightArrow.addEventListener(`onclick`, nextSlide());
