@@ -1,5 +1,5 @@
 let body = document.querySelector(`body`);
-let slide = 0;
+let currentSlide = 0;
 let carousel = document.querySelector(`.carousel-slides`);
 let script = document.createElement(`script`);
 
@@ -17,7 +17,7 @@ function container(data){
         let reviewCredit = document.createElement(`a`);
         let slide = document.createElement(`div`);
 
-        slide.classList.add(`.carousel-slide`);
+        slide.classList.add(`carousel-slide`);
         artist.textContent = data.slides[index].artist;
         album.textContent = data.slides[index].album;
         artistURL.href = data.slides[index].url;
@@ -26,10 +26,10 @@ function container(data){
         coverImage.src = data.slides[index].cover_image.path;
         coverImage.alt = data.slides[index].cover_image.alt_content;
         imageCredit.href = data.slides[index].cover_image.url;
-        imageCredit.textContent = data.slides[index].credit;
+        imageCredit.textContent = data.slides[index].cover_image.credit;
 
         review.textContent = data.slides[index].review.content;
-        reviewCredit.textContent = data.slides[index].review.credit;
+        reviewCredit.textContent = data.slides[index].review.source;
         reviewCredit.href = data.slides[index].review.url;
 
         slide.appendChild(artist);
@@ -45,25 +45,29 @@ function container(data){
 }
 
 let previousSlide = (event) =>{
-    if(slide === 0 ){
+    if(currentSlide === 0 ){
         leftArrow.style.visibility = `hidden`;
         return;
     }
-        --slide;
         leftArrow.style.visibility = `visible`;
+        console.log(`Current slide ` + currentSlide);
+        --currentSlide;
 }
 
 let nextSlide = (event) =>{
-    if(slide >= 3){
-        righttArrow.style.visibility = `hidden`;
+    let total = document.querySelectorAll(`.carousel-slide`).length;
+    if(currentSlide >= total -1){
+        rightArrow.style.visibility = `hidden`;
         return;
     }
-        --slide;
         rightArrow.style.visibility = `visible`;
+        console.log(`Current slide ` + currentSlide);
+        ++currentSlide;
 }
 
-leftArrow.addEventListener(`click`, previousSlide());
-rightArrow.addEventListener(`click`, nextSlide());
+
+leftArrow.addEventListener(`onclick`, previousSlide());
+rightArrow.addEventListener(`onclick`, nextSlide());
 
 script.setAttribute(`src`, `json/data.json`);
 body.appendChild(script);
