@@ -36,6 +36,22 @@ h2 {
 }
 
 a{
-  z-index: 2;
+  z-index: 10;
   text-decoration: none;
+}
+
+.carousel-navigation a {
+    display: block;
+    padding: 10px;
+}
+
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
 }
