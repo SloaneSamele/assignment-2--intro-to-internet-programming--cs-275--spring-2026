@@ -20,6 +20,7 @@ let lintCSS = () => {
 let transpileJSForDev = () => {
     return src(`js/*.js`)
         .pipe(babel())
+        .pipe(dest(`js`));
 };
 
 let compressHTML = () => {
@@ -56,10 +57,11 @@ let copyUnprocessedAssetsForProd = () => {
         `!img/`,
         `!img/.gitignore`,
         `!js/**`,
-        `!json/**`,
         `!node_modules/`,
         `!node_modules/**`,
-        `!*.json`,
+        `!.stylelintrc.json`,
+        `!package-lock.json`,
+        `!package.json`,
         `!.babelrc`,
         `!.eslintrc`,
         `!.editorconfig`,
@@ -68,6 +70,7 @@ let copyUnprocessedAssetsForProd = () => {
         `!README.md`,
         `!styles/**`,
         `!prod/**`,
+        `!.gitignore`
     ], {dot: true})
         .pipe(dest(`prod`));
 };
@@ -76,7 +79,7 @@ let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
-        .pipe(dest(`prod/scripts`));
+        .pipe(dest(`prod/js`));
 };
 
 let compressCSS = () => {
